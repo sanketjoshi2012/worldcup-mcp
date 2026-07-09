@@ -236,7 +236,8 @@
   const input = document.getElementById('input');
   const sendBtn = document.getElementById('send');
 
-  const ws = new WebSocket(`ws://${location.host}/chat`);
+  const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+  const ws = new WebSocket(`${protocol}://${location.host}/chat`);
   let toolEl = null;
 
   ws.onmessage = (e) => {
